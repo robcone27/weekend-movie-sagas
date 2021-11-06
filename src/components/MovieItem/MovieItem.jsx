@@ -29,14 +29,7 @@ function MovieItem({ movie }) {
             <h3 className="title">{movie.title}</h3>
                 <div className="poster">
                     <img onClick={toDetailsPage} src={movie.poster} alt={movie.title} />
-                </div>
-                    <div className="button1">
-                        <Button onClick={toDetailsPage}>Description</Button>
-                    </div>
-                    <div className="button2">
-                        <Button  
-                                onClick={removeTitle}>Remove</Button>
-                    </div>
+               
         </div>
 
     );
