@@ -1,25 +1,37 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
-
+import React, { useEffect } from 'react'; 
+import { useSelector } from 'react-redux'; 
+import { useHistory } from 'react-router';
+import MovieItem from '../MovieItem/MovieItem';
 
 function Details(){
-// const id = useSelector((store) = store.MovieID);
-const history = useHistory();
+    const movieDetails = useSelector(store => store.specificMovie)
 
-useEffect(() => {
-  dispatchEvent({ type: GET_DETAILS, payload: id})
-    })
+    const movieGenres = useSelector(store => store.genres)
+
+    const history = useHistory()
+
+    const backToHome = () => {
+        history.push('/')
+    }
+
+    
+
+    return(
+        <>
+            {/* <div>{JSON.stringify(movieDetails)}</div>  */}
+            {/* <div>{JSON.stringify(movieGenres)}</div>  */}
+            <h1>{movieDetails.title}</h1>
+            <h4>{movieDetails.description}</h4>
+            <h3>Genres:</h3>
+            {movieGenres.map(genre => (
+                <li>{genre.name}</li>
+            ))}
+            
+            <button  onClick={backToHome}>back</button>
+        </>
 
 
-
-
-return(
-    <div>
-        <h2>Movie Details</h2>
-    </div>
-);
+    );
 }
 
 export default Details;

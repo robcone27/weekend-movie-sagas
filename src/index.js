@@ -10,18 +10,75 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
+import { action } from 'commander';
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('GET_DETAILS', getDetails);
+    // yield takeEvery('ADD_MOVIE', addMovie)
+    yield takeEvery('SET_SELECTED_MOVIE', selectedMovie)
+    yield takeEvery('SET_SELECTED_MOVIE', selectedGenre)
+    yield takeEvery('REMOVE_TITLE', removeTitle)
 }
+//1 THE FUNCTIONS                                                  
+// function* addMovie(action) {
+//     try {
+//         // console.log('WHAT IS ACTION', action)
+//         const newElement = action.payload
+//         console.log('what is newElement', newElement)
+//         yield axios.post('api/movie', newElement)
+//         yield put({ type: 'FETCH_MOVIES' })
+//     } catch {
+//         console.log('ERROR in addMovie')
+//     }
+// }
+
+function* removeTitle(action) {
+    try {
+        //selected movie, action.payload will be selected move from /details
+        const movie = action.payload;
+        console.log('IN REMOVE', movie);
+        yield axios.delete(`/api/movie/delete/${movie.id}`);
+        // console.log('IN REMOVE FUNCTION', movieDetails);
+        yield put({ type: 'FETCH_MOVIES'});
+    } catch (error) {
+        console.log('error in selectedMovie', error);
+    }
+}
+
+function* selectedMovie(action) {
+    try {
+        //selected movie, action.payload will be selected move from /details
+        const movie = action.payload;
+        // console.log('IN SELECTED MOVIE', movie);
+        const movieDetails = yield axios.get(`/api/movie/details/${movie.id}`);
+        // console.log('IN FUNCTION', movieDetails);
+        yield put({ type: 'SET_MOVIE_DETAIL', payload: movieDetails.data })
+    } catch (error) {
+        console.log('error in selectedMovie', error);
+    }
+}
+
+function* selectedGenre(action) {
+    try {
+        console.log('in SELECTEDGENRE', action)
+        //selected movie, action.payload will be selected move from /details
+        const movie = action.payload;
+        // console.log('IN SELECTED MOVIE', movie);
+        const theGenres = yield axios.get(`/api/genre/details/${movie.id}`);
+        console.log('IN GENRES FUNCTION', theGenres);
+        yield put({ type: 'SET_GENRES', payload: theGenres.data })
+    } catch (error) {
+        console.log('error in selectedMovie', error);
+    }
+}
+
 
 function* fetchAllMovies() {
     // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
-        console.log('get all:', movies.data);
+        // console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {
@@ -29,16 +86,10 @@ function* fetchAllMovies() {
     }
 
 }
-function* getDetails(){
-    try{
-        const details= yield axios.get('/api/movie/details')
-    } catch (error) {
-        console.log('Error in getDetails', error);
-    }
-}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
-
+//2 THE REDUCERS.        STORE.MOVIES         STORE.GENRES                                       
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
@@ -48,14 +99,7 @@ const movies = (state = [], action) => {
             return state;
     }
 }
-const details = (state = '', action) => {
-    switch (action.type) {
-        case 'ADD_TO':
-            return action.payload;
-        default:
-            return state;
-    }
-}
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
@@ -66,11 +110,29 @@ const genres = (state = [], action) => {
     }
 }
 
+//Used to store specific movie when 'Description' button is clicked
+const specificMovie = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_DETAIL':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+
+
+//I was tempted to try storing data in the same reducer at first..
+//Used to store genre data for specific movie when 'Description' button is clicked.
+
+
+//3 THE STORE
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        specificMovie
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
