@@ -5,12 +5,43 @@ import Button from '@material-ui/core/Button';
 import MovieItem from '../MovieItem/MovieItem';
 import './MovieList.css';
 
-function MovieList(){
+function MovieList() {
 
-const dispatch = useDispatch();
-const movies = useSelector(store => store.movies);
-const history = useHistory();
+    const dispatch = useDispatch();
+    const movies = useSelector(store => store.movies);
+    
+    const history = useHistory();
 
-}
+    const toAddMoviePage = () => {
+        history.push('/add')
+    }
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_MOVIES' });
+    }, []);
+
+    return (
+        <main>
+            
+            <div className="top">
+                <div className="add-movie">
+                    <Button variant="contained" className="addMovie" onClick={toAddMoviePage}>Add a Movie</Button>
+                </div>
+            </div>
+            <section className="movies">
+                {movies.map(movie => {
+                    return (
+                        // data {movie} is now being passed down to the child component, MovieItem. Now, we need to
+                        // receive that data in the MovieItem component..
+                        <MovieItem
+                            movie={movie} />
+                    );
+                })}
+            </section>
+        </main>
+
+    );
+    
+    }
 
 export default MovieList;
