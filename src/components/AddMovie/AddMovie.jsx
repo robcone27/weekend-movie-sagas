@@ -19,13 +19,10 @@ function AddMovie() {
 
     const history = useHistory();
 
-    // useEffect(() => {
-    //     dispatch({ type: 'FETCH_GENRES' });
-    //     }, []);
 
-        useEffect(() => {
-            dispatch({ type: 'FETCH_GENRES' });
-        }, []);
+    useEffect(() => {
+        dispatch({ type: 'FETCH_GENRES' });
+    }, []);
 
     //this will add the title, description and poster
     const setMovieInput = (event) => {
@@ -66,58 +63,58 @@ function AddMovie() {
 
     return (
         <>
-        <div className="addMovie">
-           
-            <h2 className="title">Add A Movie</h2>
-         
-            <form onSubmit={handleSubmit} className="add-movie-form">
-                <input
-                    className="title-input"
-                    variant="outlined"
-                    id={"title"}
-                    required
-                    placeholder="Title"
-                    value={movie.titles}
-                    onChange={setMovieInput}
-                />
+            <div className="addMovie">
 
-                <input
-                    className="description"
-                    variant="outlined"
-                    id={"description"}
-                    required
-                    placeholder="Description"
-                    value={movie.description}
-                    onChange={setMovieInput}
-                />
-                <input
-                    variant="outlined"
-                    required
-                    id={"poster"}
-                    required
-                    placeholder="Poster"
-                    value={movie.poster}
-                    onChange={setMovieInput}
-                />
-                <select selected value={movie.genre} onChange={setGenre}>
-                    <option>Select Genre</option>
-                    <option value={1}>Adventure</option>
-                    <option value={2}>Animated</option>
-                    <option value={3}>Biographical</option>
-                    <option value={4}>Comedy</option>
-                    <option value={5}>Disaster</option>
-                    <option value={6}>Drama</option>
-                    <option value={7}>Epic</option>
-                    <option value={8}>Fantasy</option>
-                    <option value={9}>Musical</option>
-                    <option value={10}>Romantic</option>
-                    <option value={11}>Science Fiction</option>
-                    <option value={12}>Space-Opera</option>
-                    <option value={13}>Superhero</option>
+                <h2 className="title">Add A Movie</h2>
+
+                <form onSubmit={handleSubmit} className="add-movie-form">
+                    <input
+                        className="title-input"
+                        variant="outlined"
+                        id={"title"}
+                        required
+                        placeholder="Title"
+                        value={movie.titles}
+                        onChange={setMovieInput}
+                    />
+
+                    <input
+                        className="description"
+                        variant="outlined"
+                        id={"description"}
+                        required
+                        placeholder="Description"
+                        value={movie.description}
+                        onChange={setMovieInput}
+                    />
+                    <input
+                        variant="outlined"
+                        required
+                        id={"poster"}
+                        required
+                        placeholder="Poster"
+                        value={movie.poster}
+                        onChange={setMovieInput}
+                    />
+                    <select selected value={movie.genre} onChange={setGenre}>
+                        <option>Select Genre</option>
+                        <option value={1}>Adventure</option>
+                        <option value={2}>Animated</option>
+                        <option value={3}>Biographical</option>
+                        <option value={4}>Comedy</option>
+                        <option value={5}>Disaster</option>
+                        <option value={6}>Drama</option>
+                        <option value={7}>Epic</option>
+                        <option value={8}>Fantasy</option>
+                        <option value={9}>Musical</option>
+                        <option value={10}>Romantic</option>
+                        <option value={11}>Science Fiction</option>
+                        <option value={12}>Space-Opera</option>
+                        <option value={13}>Superhero</option>
                     </select>
-                <input type="submit" value="submit" />
-            </form>
-            <button onClick={backToHome}>Cancel</button>
+                    <input type="submit" value="submit" />
+                </form>
+                <button onClick={backToHome}>Cancel</button>
             </div>
         </>
     );

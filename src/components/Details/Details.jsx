@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'; 
-import { useSelector } from 'react-redux'; 
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import MovieItem from '../MovieItem/MovieItem';
 
-function Details(){
+function Details() {
     const movieDetails = useSelector(store => store.specificMovie)
 
     const movieGenres = useSelector(store => store.genres)
@@ -14,9 +14,9 @@ function Details(){
         history.push('/')
     }
 
-    
 
-    return(
+
+    return (
         <>
             <h1>{movieDetails.title}</h1>
             <h4>{movieDetails.description}</h4>
@@ -24,8 +24,8 @@ function Details(){
             {movieGenres.map(genre => (
                 <li>{genre.name}</li>
             ))}
-            
-            <button  onClick={backToHome}>back</button>
+
+            <button onClick={backToHome}>back</button>
         </>
 
 

@@ -1,3 +1,10 @@
+.poster{
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 15px;
+    border-color: white;
+}
+
 .item {
     border-radius: 20px;
     display: flex;
@@ -10,15 +17,10 @@
 
 .item:hover {
     cursor: pointer;
-    transform: scale(1.05);
-    transition: all 2s ease;
+    transform: scale(1.2);
+    transition: all 1s ease;
 }
 
 
-.poster{
-    border-radius: 15px;
-    border-color: white;
-    margin-left: 10px;
-    margin-right: 10px;
-}
+
 

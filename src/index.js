@@ -10,7 +10,7 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
-import { action } from 'commander';
+
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -18,10 +18,9 @@ function* rootSaga() {
     yield takeEvery('ADD_MOVIE', addMovie)
     yield takeEvery('SET_SELECTED_MOVIE', selectedMovie);
     yield takeEvery('SET_SELECTED_MOVIE', selectedGenre);
-    yield takeEvery('REMOVE_TITLE', removeTitle);
     yield takeEvery('FETCH_GENRES', fetchGenres);
 }
-// 1 THE FUNCTIONS   
+
 function* fetchGenres() {
     // get all movies from the DB
     try {
@@ -35,8 +34,6 @@ function* fetchGenres() {
 
 }
 
-
-
 function* addMovie(action) {
     try {
         // console.log('WHAT IS ACTION', action)
@@ -49,18 +46,18 @@ function* addMovie(action) {
     }
 }
 
-function* removeTitle(action) {
-    try {
-        //selected movie, action.payload will be selected move from /details
-        const movie = action.payload;
-        console.log('IN REMOVE', movie);
-        yield axios.delete(`/api/movie/delete/${movie.id}`);
-        // console.log('IN REMOVE FUNCTION', movieDetails);
-        yield put({ type: 'FETCH_MOVIES'});
-    } catch (error) {
-        console.log('error in selectedMovie', error);
-    }
-}
+// function* removeTitle(action) {
+//     try {
+//         //selected movie, action.payload will be selected move from /details
+//         const movie = action.payload;
+//         console.log('IN REMOVE', movie);
+//         yield axios.delete(`/api/movie/delete/${movie.id}`);
+//         // console.log('IN REMOVE FUNCTION', movieDetails);
+//         yield put({ type: 'FETCH_MOVIES' });
+//     } catch (error) {
+//         console.log('error in selectedMovie', error);
+//     }
+// }
 
 function* selectedMovie(action) {
     try {
@@ -78,9 +75,7 @@ function* selectedMovie(action) {
 function* selectedGenre(action) {
     try {
         console.log('in SELECTEDGENRE', action)
-        //selected movie, action.payload will be selected move from /details
         const movie = action.payload;
-        // console.log('IN SELECTED MOVIE', movie);
         const theGenres = yield axios.get(`/api/genre/details/${movie.id}`);
         console.log('IN GENRES FUNCTION', theGenres);
         yield put({ type: 'SET_GENRES', payload: theGenres.data })
@@ -105,8 +100,6 @@ function* fetchAllMovies() {
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
-//2 THE REDUCERS.        STORE.MOVIES         STORE.GENRES                                       
-// Used to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
@@ -126,7 +119,7 @@ const genres = (state = [], action) => {
     }
 }
 
-//Used to store specific movie when 'Description' button is clicked
+//Used to store certain movie when description button is clicked
 const specificMovie = (state = {}, action) => {
     switch (action.type) {
         case 'SET_MOVIE_DETAIL':
@@ -136,13 +129,7 @@ const specificMovie = (state = {}, action) => {
     }
 }
 
-
-
-//I was tempted to try storing data in the same reducer at first..
-//Used to store genre data for specific movie when 'Description' button is clicked.
-
-
-//3 THE STORE
+// STORE
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({

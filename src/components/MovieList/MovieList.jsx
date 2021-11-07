@@ -9,7 +9,7 @@ function MovieList() {
 
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
-    
+
     const history = useHistory();
 
     const toAddMoviePage = () => {
@@ -22,7 +22,7 @@ function MovieList() {
 
     return (
         <main>
-            
+
             <div>
                 <div className="add-movie">
                     <Button variant="contained" className="addMovie" onClick={toAddMoviePage}>Add a Movie</Button>
@@ -39,7 +39,7 @@ function MovieList() {
         </main>
 
     );
-    
-    }
+
+}
 
 export default MovieList;
