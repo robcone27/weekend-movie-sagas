@@ -5,16 +5,27 @@ import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
 // import './AddMovie.css';
 import { $CombinedState } from 'redux';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function AddMovie() {
 
     //Data to be sent to Sagas.
-    const [movie, setMovie] = useState('');
+    const [movie, setMovie] = useState({});
 
+    const genres = useSelector(store => store.genres);
 
     const dispatch = useDispatch();
 
     const history = useHistory();
+
+    // useEffect(() => {
+    //     dispatch({ type: 'FETCH_GENRES' });
+    //     }, []);
+
+        useEffect(() => {
+            dispatch({ type: 'FETCH_GENRES' });
+        }, []);
 
     //this will add the title, description and poster
     const setMovieInput = (event) => {
@@ -57,7 +68,7 @@ function AddMovie() {
         <>
             <h2>Add A Movie</h2>
             <form onSubmit={handleSubmit} className="add-movie-form">
-                <TextField
+                <input
                     className="title-input"
                     variant="outlined"
                     id={"title"}
@@ -67,7 +78,7 @@ function AddMovie() {
                     onChange={setMovieInput}
                 />
 
-                <TextField
+                <input
                     className="description"
                     variant="outlined"
                     id={"description"}
@@ -76,7 +87,7 @@ function AddMovie() {
                     value={movie.description}
                     onChange={setMovieInput}
                 />
-                <TextField
+                <input
                     variant="outlined"
                     required
                     id={"poster"}
@@ -85,7 +96,21 @@ function AddMovie() {
                     value={movie.poster}
                     onChange={setMovieInput}
                 />
-                <select selected value={movie.genre} onChanges={setGenre}>
+                <select selected value={movie.genre} onChange={setGenre}>
+                    <option>Select Genre</option>
+                    <option value={1}>Adventure</option>
+                    <option value={2}>Animated</option>
+                    <option value={3}>Biographical</option>
+                    <option value={4}>Comedy</option>
+                    <option value={5}>Disaster</option>
+                    <option value={6}>Drama</option>
+                    <option value={7}>Epic</option>
+                    <option value={8}>Fantasy</option>
+                    <option value={9}>Musical</option>
+                    <option value={10}>Romantic</option>
+                    <option value={11}>Science Fiction</option>
+                    <option value={12}>Space-Opera</option>
+                    <option value={13}>Superhero</option>
                     </select>
                 <input type="submit" value="submit" />
             </form>

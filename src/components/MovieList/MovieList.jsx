@@ -23,7 +23,7 @@ function MovieList() {
     return (
         <main>
             
-            <div className="top">
+            <div>
                 <div className="add-movie">
                     <Button variant="contained" className="addMovie" onClick={toAddMoviePage}>Add a Movie</Button>
                 </div>

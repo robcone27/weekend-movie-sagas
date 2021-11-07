@@ -18,8 +18,6 @@ function Details(){
 
     return(
         <>
-            {/* <div>{JSON.stringify(movieDetails)}</div>  */}
-            {/* <div>{JSON.stringify(movieGenres)}</div>  */}
             <h1>{movieDetails.title}</h1>
             <h4>{movieDetails.description}</h4>
             <h3>Genres:</h3>

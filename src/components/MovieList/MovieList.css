@@ -1,4 +1,7 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
+    /* width: 20px;
+    height: 10px; */
+   background-color: black;
 }
