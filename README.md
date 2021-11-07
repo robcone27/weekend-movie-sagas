@@ -2,14 +2,12 @@
 
 
 
-##Prerequisites
-Node.js, PostgreSQL, Redux
 
-##Description Description Duration: 3 days
+##Description  Duration: 3 days
 
 This project took three days. The problems that I came across was getting the POST to connect with DB, getting the DOM to show up after initially setting up the app.
 
-##Prerequisites Node.js, PostgreSQL, Redux
+
 
 ##List other prerequisites here
 
