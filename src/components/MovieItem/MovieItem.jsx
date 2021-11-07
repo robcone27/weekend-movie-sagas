@@ -12,10 +12,6 @@ function MovieItem({ movie }) {
         history.push('/details')
     }
 
-    const removeTitle = () => {
-        dispatch({ type: 'REMOVE_TITLE', payload: movie });
-    }
-
     return (
         <div key={movie.id} className="item">
             <h3 className="title">{movie.title}</h3>

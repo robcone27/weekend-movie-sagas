@@ -46,19 +46,6 @@ function* addMovie(action) {
     }
 }
 
-// function* removeTitle(action) {
-//     try {
-//         //selected movie, action.payload will be selected move from /details
-//         const movie = action.payload;
-//         console.log('IN REMOVE', movie);
-//         yield axios.delete(`/api/movie/delete/${movie.id}`);
-//         // console.log('IN REMOVE FUNCTION', movieDetails);
-//         yield put({ type: 'FETCH_MOVIES' });
-//     } catch (error) {
-//         console.log('error in selectedMovie', error);
-//     }
-// }
-
 function* selectedMovie(action) {
     try {
         //selected movie, action.payload will be selected move from /details

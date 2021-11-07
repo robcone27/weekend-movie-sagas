@@ -1,9 +1,19 @@
-# Project Name
+# Weekend Movie Sagas
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+##Description Description Duration: 3 days
+
+This project took three days. The problems that I came across was getting the POST to connect with DB, getting the DOM to show up after initially setting up the app.
+
+##Prerequisites Node.js, PostgreSQL, Redux
+
+##List other prerequisites here
+
+npm install to get the required dependencies. Create a new sql database named "saga_movies_weekend" Run the CREATE TABLE and INSERT INTO feedback from 'database.sql' to initialize the gallery tables Run npm run server in your terminal Run npm run client in your terminal The npm run client command will open up a new browser tab for you! Usage Connect to localhost:3000 to view the pre-loaded feedback questions Fill out form. Application will be uploaded and movie information will be able to view and added.
+
+##Built With JavaScript, Material-UI, Node.js, PostgreSQL, React, Redux, and Saga
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
