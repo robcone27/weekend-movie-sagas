@@ -2,7 +2,8 @@
 
 
 
-## Description
+##Prerequisites
+Node.js, PostgreSQL, Redux
 
 ##Description Description Duration: 3 days
 
