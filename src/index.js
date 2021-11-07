@@ -15,23 +15,23 @@ import { action } from 'commander';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    // yield takeEvery('ADD_MOVIE', addMovie)
-    yield takeEvery('SET_SELECTED_MOVIE', selectedMovie)
-    yield takeEvery('SET_SELECTED_MOVIE', selectedGenre)
-    yield takeEvery('REMOVE_TITLE', removeTitle)
+    yield takeEvery('ADD_MOVIE', addMovie)
+    yield takeEvery('SET_SELECTED_MOVIE', selectedMovie);
+    yield takeEvery('SET_SELECTED_MOVIE', selectedGenre);
+    yield takeEvery('REMOVE_TITLE', removeTitle);
 }
-//1 THE FUNCTIONS                                                  
-// function* addMovie(action) {
-//     try {
-//         // console.log('WHAT IS ACTION', action)
-//         const newElement = action.payload
-//         console.log('what is newElement', newElement)
-//         yield axios.post('api/movie', newElement)
-//         yield put({ type: 'FETCH_MOVIES' })
-//     } catch {
-//         console.log('ERROR in addMovie')
-//     }
-// }
+// 1 THE FUNCTIONS                                                  
+function* addMovie(action) {
+    try {
+        // console.log('WHAT IS ACTION', action)
+        const newElement = action.payload
+        console.log('what is newElement', newElement)
+        yield axios.post('api/movie', newElement)
+        yield put({ type: 'FETCH_MOVIES' })
+    } catch {
+        console.log('ERROR in addMovie')
+    }
+}
 
 function* removeTitle(action) {
     try {

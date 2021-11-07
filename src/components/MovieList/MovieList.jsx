@@ -31,8 +31,6 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        // data {movie} is now being passed down to the child component, MovieItem. Now, we need to
-                        // receive that data in the MovieItem component..
                         <MovieItem
                             movie={movie} />
                     );
