@@ -17,3 +17,4 @@ npm install to get the required dependencies. Create a new sql database named "s
 ##Built With JavaScript, Material-UI, Node.js, PostgreSQL, React, Redux, and Saga
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+git 
