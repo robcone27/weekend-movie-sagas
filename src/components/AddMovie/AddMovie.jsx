@@ -16,8 +16,21 @@ function AddMovie() {
 
     const history = useHistory();
 
+    //this will add the title, description and poster
+    const setMovieInput = (event) => {
+        switch (event.target.id) {
+            case 'title':
+                setMovie({ ...movie, title: event.target.value })
+                break;
+            case 'description':
+                setMovie({ ...movie, description: event.target.value })
+                break;
+            case 'poster':
+                setMovie({ ...movie, poster: event.target.value })
+                break;
+        }
+    }
 
-    
 
 
 }
