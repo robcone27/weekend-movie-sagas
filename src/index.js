@@ -19,21 +19,21 @@ function* rootSaga() {
     yield takeEvery('SET_SELECTED_MOVIE', selectedMovie);
     yield takeEvery('SET_SELECTED_MOVIE', selectedGenre);
     yield takeEvery('REMOVE_TITLE', removeTitle);
-    // yield takeEvery('FETCH_GENRES', fetchGenres);
+    yield takeEvery('FETCH_GENRES', fetchGenres);
 }
 // 1 THE FUNCTIONS   
-// function* fetchGenres() {
-//     // get all movies from the DB
-//     try {
-//         const genres = yield axios.get('/api/genre/all');
-//         console.log('get all:', movies.data);
-//         yield put({ type: 'FETCH_GENRES', payload: genres.data });
+function* fetchGenres() {
+    // get all movies from the DB
+    try {
+        const genres = yield axios.get('/api/genre/all');
+        console.log('get all:', movies.data);
+        yield put({ type: 'SET_GENRES', payload: genres.data });
 
-//     } catch {
-//         console.log('get all error');
-//     }
+    } catch {
+        console.log('get all error');
+    }
 
-// }
+}
 
 
 

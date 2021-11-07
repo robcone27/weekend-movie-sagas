@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
-// import './AddMovie.css';
+import './AddMovie.css';
 import { $CombinedState } from 'redux';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -66,6 +66,7 @@ function AddMovie() {
 
     return (
         <>
+        <div className="addMovie">
             <h2>Add A Movie</h2>
             <form onSubmit={handleSubmit} className="add-movie-form">
                 <input
@@ -115,6 +116,7 @@ function AddMovie() {
                 <input type="submit" value="submit" />
             </form>
             <button onClick={backToHome}>Cancel</button>
+            </div>
         </>
     );
 
