@@ -31,6 +31,30 @@ function AddMovie() {
         }
     }
 
+    const setGenre = (event) => {
+        setMovie({
+            ...movie,
+            genre_id: event.target.value
+        })
+    }
+
+    return (
+        <>
+            <h2>Add A Movie</h2>
+            {/* //form will go here */}
+            <TextField
+                className="title-input"
+                variant="outlined"
+                id={"title"}
+                required
+                placeholder="Title"
+                value={movie.titles}
+                onChange={setMovieInput}
+            />
+        </>
+    );
+
+
 
 
 }
