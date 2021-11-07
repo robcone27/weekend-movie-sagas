@@ -1,0 +1,24 @@
+.item {
+    border-radius: 20px;
+    display: flex;
+    flex-direction:column;
+    margin: 35px;
+    
+    background: #00000083;
+  
+}
+
+.item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 2s ease;
+}
+
+
+.poster{
+    border-radius: 15px;
+    border-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+

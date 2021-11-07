@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // import { BsArrowRightShort, BsTrashFill } from "react-icons/bs";
 // import Paper from '@material-ui/core/Paper';
-// import './MovieItem.css';
+import './MovieItem.css';
 function MovieItem({ movie }) {
 
     const history = useHistory();

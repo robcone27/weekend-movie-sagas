@@ -67,7 +67,9 @@ function AddMovie() {
     return (
         <>
         <div className="addMovie">
-            <h2>Add A Movie</h2>
+           
+            <h2 className="title">Add A Movie</h2>
+         
             <form onSubmit={handleSubmit} className="add-movie-form">
                 <input
                     className="title-input"
