@@ -31,6 +31,10 @@ function AddMovie() {
         }
     }
 
+    const backToHome = () => {
+        history.push('/')
+    }
+
     const setGenre = (event) => {
         setMovie({
             ...movie,
@@ -38,19 +42,54 @@ function AddMovie() {
         })
     }
 
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        alert('Movie Added')
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: movie
+        })
+    }
+
+
     return (
         <>
             <h2>Add A Movie</h2>
-            {/* //form will go here */}
-            <TextField
-                className="title-input"
-                variant="outlined"
-                id={"title"}
-                required
-                placeholder="Title"
-                value={movie.titles}
-                onChange={setMovieInput}
-            />
+            <form onSubmit={handleSubmit} className="add-movie-form">
+                <TextField
+                    className="title-input"
+                    variant="outlined"
+                    id={"title"}
+                    required
+                    placeholder="Title"
+                    value={movie.titles}
+                    onChange={setMovieInput}
+                />
+
+                <TextField
+                    className="description"
+                    variant="outlined"
+                    id={"description"}
+                    required
+                    placeholder="Description"
+                    value={movie.description}
+                    onChange={setMovieInput}
+                />
+                <TextField
+                    variant="outlined"
+                    required
+                    id={"poster"}
+                    required
+                    placeholder="Poster"
+                    value={movie.poster}
+                    onChange={setMovieInput}
+                />
+                <select selected value={movie.genre} onChanges={setGenre}>
+                    </select>
+                <input type="submit" value="submit" />
+            </form>
+            <button onClick={backToHome}>Cancel</button>
         </>
     );
 
