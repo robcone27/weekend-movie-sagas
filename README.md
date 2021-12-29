@@ -4,7 +4,7 @@
 
 _Duration: Weekend Challenge_
 
-This app is a movie list app. Users can view movies and once clicked on it will give you a movie description and the genres it is related to. You can also add a new movie, description and genre to the existing list.
+This is a movie list app. Users can view movies and once clicked on it will give you a movie description and the genres it is related to. You can also add a new movie, description and genre to the existing list.
 
 The app uses a [PostgreSQL](https://www.postgresql.org/) database to store the movies and genres, [Express](https://expressjs.com/) / [Node.js](https://nodejs.org/en/) as a server, and [React](https://reactjs.org/), [Redux](https://redux.js.org/), and [Redux-Saga](https://redux-saga.js.org/) on the front end. 
 
