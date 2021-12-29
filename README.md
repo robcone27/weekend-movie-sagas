@@ -16,7 +16,7 @@ _Home screen._
 ![pics/details.png](pics/details.png)
 _Selected movie details screen._
 
-![pics/add.png](pics/edit.png)
+![pics/add2.png](pics/add2.png)
 _Add movie screen._
 
 ## Prerequisites
@@ -41,8 +41,7 @@ _Add movie screen._
 4. [Redux](https://redux.js.org/)
 5. [Redux-Saga](https://redux-saga.js.org/)
 6. [PostgreSQL](https://www.postgresql.org/)
-7. [Material-UI](https://mui.com/)
-8. [axios](https://www.npmjs.com/package/axios)
-9. HTML
-10. CSS
+7. [axios](https://www.npmjs.com/package/axios)
+8. HTML
+9. CSS
 
