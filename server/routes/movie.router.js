@@ -43,13 +43,12 @@ router.delete('/delete/:id', (req, res) => {
   .catch((error) =>{
     console.log('Error completing DELETE movie query', error);
     res.sendStatus(500);
-  })
-})
+   })
+ })
 })
 
+// RETURNING "id" will give us back the id of the created movie
 router.post('/', (req, res) => {
-  // console.log("SERVER-SIDE ADD-MOVIE", req.body);
-  // RETURNING "id" will give us back the id of the created movie
   const insertMovieQuery = `
   INSERT INTO "movies" ("title", "poster", "description")
   VALUES ($1, $2, $3)

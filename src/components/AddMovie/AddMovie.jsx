@@ -12,13 +12,9 @@ function AddMovie() {
 
     //Data to be sent to Sagas.
     const [movie, setMovie] = useState({});
-
     const genres = useSelector(store => store.genres);
-
     const dispatch = useDispatch();
-
     const history = useHistory();
-
 
     useEffect(() => {
         dispatch({ type: 'FETCH_GENRES' });
@@ -50,7 +46,6 @@ function AddMovie() {
         })
     }
 
-
     const handleSubmit = event => {
         event.preventDefault();
         alert('Movie Added')
@@ -59,7 +54,6 @@ function AddMovie() {
             payload: movie
         })
     }
-
 
     return (
         <>

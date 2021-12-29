@@ -6,7 +6,6 @@ function MovieItem({ movie }) {
 
     const history = useHistory();
     const dispatch = useDispatch();
-
     const toDetailsPage = () => {
         dispatch({ type: 'SET_SELECTED_MOVIE', payload: movie });
         history.push('/details')
@@ -21,6 +20,5 @@ function MovieItem({ movie }) {
         </div>
     );
 }
-
 
 export default MovieItem;
