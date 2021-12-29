@@ -117,6 +117,7 @@ const specificMovie = (state = {}, action) => {
 }
 
 // STORE
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
